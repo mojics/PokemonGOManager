@@ -1,0 +1,33 @@
+
+  {{#if error}}
+    <b >{{error}}</b>
+  {{/if}}
+<h2>Credentials</h2>
+
+
+<form action="/pokemons " method="post">
+    <div>
+        <div><label for="username">Username: </label></div>
+        <input type="text" name="username"/>
+    </div>
+
+    <div>
+        <div><label for="password">Password: </label></div>
+        <input type="password" name="password"/>
+    </div>
+    <div>
+        <div><label for="password">Authentication type: </label></div>
+        <select name="auth_type">
+            <option value="ptc">
+                PTC
+            </option>
+            <option value="google">
+                Google
+            </option>
+        </select>
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+
+</form>

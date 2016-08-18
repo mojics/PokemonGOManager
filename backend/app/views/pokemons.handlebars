@@ -1,0 +1,36 @@
+<h2>List of pokemons</h2>
+
+{{#if pokemons}}
+<table class="tbl-list stripe" >
+  <thead>
+    <tr>
+        <th align="left">Pokemon Name</th>
+        <th align="left">CP</th>
+        <th align="left">IV</th>
+    </tr>
+  </thead>
+  {{#each pokemons}}
+    <tr>
+    <td>{{this.info.name}}</td>
+    <td>{{this.cp}} CP</td>
+    <td>{{this.iv_pct}}% IV</td>
+    </tr>
+  {{/each}}
+</table>
+
+
+
+
+  <script>
+      $(document).ready(function(){
+        $('.tbl-list').DataTable();
+    });
+  </script>
+{{/if}}
+
+
+
+
+
+
+

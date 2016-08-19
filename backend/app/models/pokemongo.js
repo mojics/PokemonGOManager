@@ -3,9 +3,10 @@
 
 function PokemonGo (opts) {
   if(!opts) opts = {};
-  console.log('opts',opts);
+  //console.log('opts',opts);
   this.username = opts.username || '';
   this.password = opts.password || '';
+  this.location = opts.location || '';
   this.auth_type = opts.auth_type || '';
 
 
@@ -22,7 +23,8 @@ function PokemonGo (opts) {
           a.GetInventory(function (err, inventory) {
 
               //callback = callback || function(){};
-              if (!err) {
+
+              if (!err || inventory.inventory_delta.inventory_items !== null) {
                   var cleanedInventory = { player_stats: null, eggs : [], pokemon: [], items: [] };
                   for (var i = 0; i < inventory.inventory_delta.inventory_items.length; i++) {
                       var inventory_item_data = inventory.inventory_delta.inventory_items[i].inventory_item_data;
@@ -67,7 +69,11 @@ function PokemonGo (opts) {
 
                 //res.json(cleanedInventory);
                   //console.log(cleanedInventory);
+              }else{
+                callback({error: true, message: 'Error: Account cannot be retrieved.'});
               }
+
+
           });
   }
 
@@ -83,7 +89,7 @@ function PokemonGo (opts) {
       //Set environment variables or replace placeholder text
       var location = {
           type: 'name',
-          name: process.env.PGO_LOCATION || 'marina square Singapore'
+          name: process.env.PGO_LOCATION || this.location
       };
 
 
@@ -95,7 +101,7 @@ function PokemonGo (opts) {
           if (err){
 
             callback({error: true, message: err.toString()});
-            console.log(err.toString());
+            //console.log(err.toString());
             return;
           }
 

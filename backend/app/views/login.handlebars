@@ -1,33 +1,80 @@
 
+
+
+
+
+
+<div>
+    <div class="row row__container">
+    <div class="">
+      <div class="card ">
+
+
+        <div class="card-content white-text">
+      <span class="card-title activator grey-text text-darken-4">Credentials</span>
+
+          <form action="/pokemons " method="post">
+                <div class="input-field">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username" autocomplete="off"/>
+                </div>
+
+                <div class="input-field">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password"  id="password" autocomplete="off"/>
+
+                </div>
+                <div>
+                    <label for="password">Location: </label>
+                    <input type="text" name="location" id="location" autocomplete="off"/>
+                </div>
+
+    <div>
+      <input name="auth_type" type="radio" id="test1" value="ptc" checked/>
+      <label for="test1">Pokemon Trainer Club</label>
+      <input name="auth_type" type="radio" id="test2" value="google"/>
+      <label for="test2">Google</label>
+    </div>
+    <div>&nbsp;</div>
+
+                <div>
+                  <input type="submit" class="waves-effect waves-light btn" value="Submit">
+                </div>
+
+            </form>
+        </div>
+        
+
+        <!--<div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>-->
+      </div>
+    </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    $('#location').attr('value',startPos.coords.latitude+','+startPos.coords.longitude);
+    console.log(startPos.coords.latitude+','+startPos.coords.longitude);
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+
+ $(document).ready(function() {
+    $('select').material_select();
+  });
+
   {{#if error}}
-    <b >{{error}}</b>
+    var systemMsg = '{{error}}';
+
+      Materialize.toast(systemMsg, 4000) // 4000 is the duration of the toast
+
   {{/if}}
-<h2>Credentials</h2>
 
 
-<form action="/pokemons " method="post">
-    <div>
-        <div><label for="username">Username: </label></div>
-        <input type="text" name="username"/>
-    </div>
-
-    <div>
-        <div><label for="password">Password: </label></div>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <div><label for="password">Authentication type: </label></div>
-        <select name="auth_type">
-            <option value="ptc">
-                PTC
-            </option>
-            <option value="google">
-                Google
-            </option>
-        </select>
-    </div>
-    <div>
-      <input type="submit" value="Submit">
-    </div>
-
-</form>
+</script>

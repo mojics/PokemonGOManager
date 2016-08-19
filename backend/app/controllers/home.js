@@ -57,7 +57,7 @@ router.post('/pokemons', function (req, res, next) {
       res.redirect('/login?error='+details.message);
     }else{
       //res.json(details);
-      console.log(details.pokemonlist);
+      //console.log(details.pokemonlist);
       res.render('pokemons',{
         pokemons: details.pokemon,
         pokemonlist: details.pokemonlist

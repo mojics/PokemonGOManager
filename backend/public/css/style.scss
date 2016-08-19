@@ -1,6 +1,13 @@
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+input{
+	&[type="text"],&[type="password"]{
+		color: #555;
+	}
+	
 }
 
 a {
@@ -10,4 +17,15 @@ a {
 
 .tbl-list{
   width: 100%;
+}
+
+
+.row__container {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.page__container {
+	max-width: 960px;
+	margin: 0 auto;
 }

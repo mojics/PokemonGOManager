@@ -1,23 +1,27 @@
-<h2>List of pokemons</h2>
+<div class="page__container">
+<h4>Pokemons</h4>
 
 {{#if pokemons}}
 <table class="tbl-list stripe" >
   <thead>
     <tr>
-        <th align="left">Pokemon Name</th>
+        <th  align="left"></th>
         <th align="left">CP</th>
         <th align="left">IV</th>
     </tr>
   </thead>
   {{#each pokemons}}
     <tr>
-    <td>{{this.info.name}}</td>
-    <td>{{this.cp}} CP</td>
-    <td>{{this.iv_pct}}% IV</td>
+
+    <td>
+      {{this.info.name}}</td>
+    <td>{{this.cp}}</td>
+    <td>{{this.iv_pct}}%</td>
     </tr>
   {{/each}}
 </table>
 
+</div>
 
 
 
@@ -25,6 +29,10 @@
       $(document).ready(function(){
         $('.tbl-list').DataTable();
     });
+
+    $(document).ready(function() {
+    $('select').material_select();
+  });
   </script>
 {{/if}}
 
